@@ -8,7 +8,6 @@
     content="
       width=device-width,
       initial-scale=1.0,
-      maximum-scale=1.0,
       user-scalable=no
     "
   >
@@ -25,7 +24,6 @@
     body {
       margin: 0;
       overflow: hidden;
-      background: black;
     }
   </style>
 </head>
@@ -34,28 +32,20 @@
 
 <a-scene
 
-  embedded
-
   vr-mode-ui="enabled: false"
 
   renderer="
     antialias: true;
     alpha: true;
-    logarithmicDepthBuffer: true;
-    colorManagement: true;
   "
 
   arjs="
     sourceType: webcam;
-    videoTexture: true;
     debugUIEnabled: false;
   "
 >
 
-  <!-- ===================== -->
   <!-- MODEL -->
-  <!-- ===================== -->
-
   <a-assets>
 
     <a-asset-item
@@ -66,9 +56,7 @@
   </a-assets>
 
 
-  <!-- ===================== -->
   <!-- LIGHT -->
-  <!-- ===================== -->
 
   <a-entity
     light="
@@ -82,14 +70,11 @@
       type: directional;
       intensity: 2
     "
-
     position="1 1 1">
   </a-entity>
 
 
-  <!-- ===================== -->
   <!-- MARKER -->
-  <!-- ===================== -->
 
   <a-marker preset="hiro">
 
@@ -116,18 +101,9 @@
   </a-marker>
 
 
-  <!-- ===================== -->
   <!-- CAMERA -->
-  <!-- ===================== -->
 
-  <a-entity
-
-    camera="
-      fov: 55
-    "
-
-  >
-  </a-entity>
+  <a-entity camera></a-entity>
 
 </a-scene>
 
