@@ -31,15 +31,16 @@
       background: black;
     }
 
-    canvas {
-      width: 100% !important;
-      height: 100% !important;
-    }
-
+    /* Sửa camera bị zoom */
     video {
       width: 100% !important;
       height: 100% !important;
       object-fit: cover;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
     }
 
   </style>
@@ -48,8 +49,6 @@
 <body>
 
 <a-scene
-
-  embedded="false"
 
   vr-mode-ui="enabled: false"
 
@@ -86,14 +85,14 @@
   <a-entity
     light="
       type: ambient;
-      intensity: 1.5;
+      intensity: 2
     ">
   </a-entity>
 
   <a-entity
     light="
       type: directional;
-      intensity: 2;
+      intensity: 2
     "
     position="1 1 1">
   </a-entity>
@@ -105,24 +104,35 @@
 
   <a-marker preset="hiro">
 
+    <!-- CONTAINER -->
+
     <a-entity
-
-      gltf-model="#dino"
-
-      position="-0.05 0.15 0"
-
-      scale="0.35 0.35 0.35"
-
+      position="0 0 0"
       rotation="0 0 0"
-
-      animation="
-        property: rotation;
-        to: 0 360 0;
-        loop: true;
-        dur: 10000;
-        easing: linear;
-      "
     >
+
+      <!-- DINOSAUR -->
+
+      <a-entity
+
+        gltf-model="#dino"
+
+        position="-0.05 0.12 0"
+
+        scale="0.35 0.35 0.35"
+
+        rotation="0 0 0"
+
+        animation="
+          property: rotation;
+          to: 0 360 0;
+          loop: true;
+          dur: 10000;
+          easing: linear;
+        "
+      >
+      </a-entity>
+
     </a-entity>
 
   </a-marker>
