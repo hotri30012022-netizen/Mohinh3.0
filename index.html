@@ -5,7 +5,12 @@
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
+    content="
+      width=device-width,
+      initial-scale=1.0,
+      maximum-scale=1.0,
+      user-scalable=no
+    "
   >
 
   <title>AR Triceratops</title>
@@ -20,6 +25,7 @@
     body {
       margin: 0;
       overflow: hidden;
+      background: black;
     }
   </style>
 </head>
@@ -27,11 +33,29 @@
 <body>
 
 <a-scene
+
   embedded
-  arjs="sourceType: webcam; debugUIEnabled: false;"
+
+  vr-mode-ui="enabled: false"
+
+  renderer="
+    antialias: true;
+    alpha: true;
+    logarithmicDepthBuffer: true;
+    colorManagement: true;
+  "
+
+  arjs="
+    sourceType: webcam;
+    videoTexture: true;
+    debugUIEnabled: false;
+  "
 >
 
+  <!-- ===================== -->
   <!-- MODEL -->
+  <!-- ===================== -->
+
   <a-assets>
 
     <a-asset-item
@@ -41,15 +65,36 @@
 
   </a-assets>
 
+
+  <!-- ===================== -->
   <!-- LIGHT -->
+  <!-- ===================== -->
+
   <a-entity
-    light="type: ambient; intensity: 2">
+    light="
+      type: ambient;
+      intensity: 1.5
+    ">
   </a-entity>
 
+  <a-entity
+    light="
+      type: directional;
+      intensity: 2
+    "
+
+    position="1 1 1">
+  </a-entity>
+
+
+  <!-- ===================== -->
   <!-- MARKER -->
+  <!-- ===================== -->
+
   <a-marker preset="hiro">
 
     <a-entity
+
       gltf-model="#dino"
 
       position="0 0.5 0"
@@ -62,7 +107,7 @@
         property: rotation;
         to: 0 360 0;
         loop: true;
-        dur: 8000;
+        dur: 10000;
         easing: linear;
       "
     >
@@ -70,8 +115,19 @@
 
   </a-marker>
 
+
+  <!-- ===================== -->
   <!-- CAMERA -->
-  <a-entity camera></a-entity>
+  <!-- ===================== -->
+
+  <a-entity
+
+    camera="
+      fov: 55
+    "
+
+  >
+  </a-entity>
 
 </a-scene>
 
